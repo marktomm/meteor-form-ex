@@ -11,57 +11,48 @@ Booking.attachSchema(new SimpleSchema({
       ]
     }
   },
-  lux_car_rent: {
+  car_rent: {
     type: String,
-    label: "Luxury Vehicle Options",
-    allowedValues: [ "mercedes", "lexus", "audi", "ferrari" ],
-    autoform: {
-      options: [
-        { label: "Mercedes", value: "merecedes"  },
-        { label: "Lexus", value: "lexus" },
-        { label: "Audi", value: "audi" },
-        { label: "Ferrari", value: "ferrari" }
-      ]
-    }
+    allowedValues: [ "mercedes", "lexus", "audi", "ferrari", "opel", "ford", "kia", "mazda" ],
   },
-  regular_car_rent: {
-    type: String,
-    label: "Vehicle Options",
-    allowedValues: [ "opel", "ford", "kia", "mazda" ],
-    autoform: {
-      options: [
-        { label: "Opel", value: "opel"  },
-        { label: "Ford", value: "ford" },
-        { label: "Kia", value: "kia" },
-        { label: "Mazda", value: "mazda" }
-      ]
-    }
-  }
-  
-//  author: {
-//    type: String,
-//    label: "Author"
-//  },
-//  copies: {
-//    type: Number,
-//    label: "Number of copies",
-//    min: 0
-//  },
-//  lastCheckedOut: {
-//    type: Date,
-//    label: "Last date this book was checked out",
-//    optional: true
-//  },
-//  summary: {
-//    type: String,
-//    label: "Brief summary",
-//    optional: true,
-//    max: 1000
-//  },
-//  cost: {
-//    type: Number,
-//    label: 'Cost',
-//    optional: true,
-//    max: 1000
-//  }
 }));
+
+
+if (Meteor.isClient) {
+  Template.testForm.helpers({
+    luxCarOptions: function(){
+      return  [
+                { label: "Mercedes", value: "merecedes"  },
+                { label: "Lexus", value: "lexus" },
+                { label: "Audi", value: "audi" },
+                { label: "Ferrari", value: "ferrari" }
+              ];
+    },
+    regularCarOptions: function(){
+      return  [
+                { label: "Opel", value: "opel"  },
+                { label: "Ford", value: "ford" },
+                { label: "Kia", value: "kia" },
+                { label: "Mazda", value: "mazda" }
+              ];
+    }
+  });
+  AutoForm.hooks({
+    insertBookingForm: {
+      before: {
+        insert: function(doc, template) {
+          console.log("before");
+          console.log(doc);
+          // send email f.ex.
+          return doc;
+        }
+      },
+      after: {
+        insert: function(error, result, template) {
+          console.log("after");
+          //after db upd
+        }
+      },
+    }
+  });
+};
