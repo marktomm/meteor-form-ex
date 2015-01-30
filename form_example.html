@@ -4,11 +4,85 @@
 
 <body>
   <h1>Welcome to Meteor!</h1>
-
-  {{> hello}}
+  {{> testForm}}
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="insertBookForm">
+  <div class="container">
+    {{#autoForm collection="Books" id="insertBookForm" type="insert"}}
+    <fieldset>
+      <legend>{{trans 'form.add_a_book'}}</legend>
+      {{> afQuickField name='title'}}
+      {{> afFieldInput name='author'}}
+      {{> afQuickField name='summary' rows=6}}
+      {{> afQuickField name='copies'}}
+      {{> afQuickField name='lastCheckedOut'}}
+      <div class="form-group{{#if afFieldIsInvalid name='cost'}} has-error{{/if}}">
+          <label for="cost_fld">Cost</label>
+          {{> afFieldInput name='cost' id='cost_fld'}}
+        {{#if afFieldIsInvalid name='cost'}}
+        <span>{{afFieldMessage name='cost'}}</span>
+        {{/if}}
+      </div>
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Insert</button>
+    {{/autoForm}}
+  </div>
 </template>
+
+<template name="testForm">
+  <div class="container">
+    {{#autoForm collection="Booking" id="insertBookingForm" type="insert"}}
+    <fieldset>
+      <legend>Request Visa</legend>
+      <div class="form-group{{#if afFieldIsInvalid name='visa_type'}} has-error{{/if}}">
+        <label for="visa_type">Visa Type</label>
+        {{> afFieldInput name='visa_type' id='visa_type'}}
+        {{#if afFieldValueIs name='visa_type' value='business'}}
+          <label for='car_option'>Choose your lux car</label>
+          {{> afFieldInput name='lux_car_rent' id='car_option'}}
+        {{/if}}
+      </div>
+    </fieldset>
+    {{/autoForm}}
+  </div>
+</template>
+
+<!--
+  A BASIC INSERT FORM
+{{> quickForm collection="SomeCollection" id="SomeFormId" type="insert"}}
+{{> quickForm collection="SomeCollection" id="SomeFormId" type="update"}}
+
+  A CUSTOM INSERT FORM
+{{#autoForm collection="SomeCollection" id="SomeFormId" type="insert"}}
+  <fieldset>
+    {{> afQuickField name='title'}}
+  </fieldset>
+{{/autoForm}}
+
+  ANOTHER CUSTOM INSERT FORM
+afQuickField
+afFieldInput
+
+
+  ADVANCED
+{{#autoForm collection/schema id doc validation template tpye meteormethod resetOnSuccess autosave filter autoConvert removeEmptyStrings trimStrings [form tag stuff]}}
+{{/autoForm}}
+
+{{> afFieldInput name template options capitalize noselect trueLabel falseLabel [form tag stuff] placeholder}}
+
+{{> afFieldMessage}}
+
+
+
+  SIMPLE SCHEMA
+MySchema = new SimpleSchema({
+  firstName: {
+    type: String,
+    label: function () {
+      return Session.get("lang") == "de"
+            ? "Vorname" : "first name";
+    }
+  }
+});
+-->

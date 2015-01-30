@@ -5,5 +5,8 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
 insecure
+autopublish
+aldeed:autoform
+aldeed:collection2
+mizzao:bootstrap-3
