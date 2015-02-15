@@ -1,4 +1,5 @@
 Booking = new Mongo.Collection("booking");
+
 Booking.attachSchema(new SimpleSchema({
   visa_type: {
     type: String,
@@ -19,6 +20,7 @@ Booking.attachSchema(new SimpleSchema({
 
 
 if (Meteor.isClient) {
+  
   Template.testForm.helpers({
     luxCarOptions: function(){
       return  [
@@ -37,6 +39,7 @@ if (Meteor.isClient) {
               ];
     }
   });
+  
   AutoForm.hooks({
     insertBookingForm: {
       before: {
@@ -50,9 +53,20 @@ if (Meteor.isClient) {
       after: {
         insert: function(error, result, template) {
           console.log("after");
+          if(error){
+            console.log("Insert Error:", error);
+          }
+          else
+          {
+            console.log("Insert Result:", result);
+          }
           //after db upd
         }
       },
     }
   });
 };
+
+Booking.allow({
+  insert: function(){return true;}
+});
