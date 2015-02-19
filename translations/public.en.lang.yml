@@ -1,0 +1,25 @@
+form:
+  visa_form_title: "Request Visa"
+  name: "Name"
+  phone: "Phone Number"
+  email: "E-mail"
+  signup: "Sign up"
+  gender:
+    label: "Gender"
+    male: "Male"
+    female: "Female"
+  visa_type: 
+    label: "Visa Type"
+    business: "Business class"
+    tourist: "Tourist class"
+    bus_car_opt: "Choose Your luxury car"
+    tour_car_opt: "Choose your car"
+  cost: "Cost"
+  error:
+    name: "Please enter a valid name"
+    phone: "Phone must be between 2 and 30 numbers"
+    email: "Invalid e-mail"
+    maxNum: "[label] cannot exceed [max]"
+    required: "[label] is required"
+main_title: "Welcome to Meteor!"
+ 

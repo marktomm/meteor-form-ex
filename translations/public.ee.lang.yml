@@ -1,0 +1,24 @@
+form:
+  visa_form_title: "Taotle Visa"
+  name: "Nimi"
+  phone: "Telefoni number"
+  email: "E-post"
+  signup: "Edasi"
+  gender:
+    label: "Sugu"
+    male: "Mees"
+    female: "Naine"
+  visa_type:
+    label: "Visa tüüp"
+    business: "Äri klass"
+    tourist: "Turisti klass"
+    bus_car_opt: "Valige oma luksus auto"
+    tour_car_opt: "Valige oma auto"
+  cost: "Hind"
+  error:
+    name: "Sisestage korrektne nimi"
+    phone: "Telefoni number peab olema 2 ja 30 margi vahel"
+    email: "Vale e-osti aadresss"
+    maxNum: "[label] ei saa olla suurem kui [max]"
+    required: "[label] on nõutud väli"
+main_title: "Tere tulemast!"

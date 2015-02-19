@@ -1,16 +1,13 @@
 Booking = new Mongo.Collection("booking");
 
 Booking.attachSchema(new SimpleSchema({
+  gender:{
+    type:String,
+    allowedValues: ["male", "female"],
+  },
   visa_type: {
     type: String,
-    label: "Visa type",
     allowedValues: [ "business", "tourist" ],
-    autoform: {
-      options: [
-        { label: "Business", value: "business" },
-        { label: "Tourist", value: "tourist" }
-      ]
-    }
   },
   car_rent: {
     type: String,
@@ -18,10 +15,15 @@ Booking.attachSchema(new SimpleSchema({
   },
 }));
 
-
 if (Meteor.isClient) {
   
   Template.testForm.helpers({
+    visaTypeOptions: function(){
+      return  [
+                { label: FrontLang.getCallback('form.visa_type.business'), value: "business" },
+                { label: FrontLang.getCallback('form.visa_type.tourist'), value: "tourist" }
+              ];
+    },
     luxCarOptions: function(){
       return  [
                 { label: "Mercedes", value: "merecedes"  },
@@ -36,6 +38,12 @@ if (Meteor.isClient) {
                 { label: "Ford", value: "ford" },
                 { label: "Kia", value: "kia" },
                 { label: "Mazda", value: "mazda" }
+              ];
+    },
+    genderOptions: function(){
+      return [
+              { label: FrontLang.getCallback('form.gender.male'), value: "male" },
+              { label: FrontLang.getCallback('form.gender.female'), value: "female" }
               ];
     }
   });
