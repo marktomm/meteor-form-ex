@@ -2,5 +2,45 @@
   "body":
   {
     "title": "Welcome to meteor"
+  },
+  
+  "test_form":
+  {
+    "title": "Requested Visa",
+    "visa_type":
+    {
+      "label": "Visa Type",
+      "business": "Business",
+      "tourist": "Tourist",
+      "schema":
+      {
+        "label": "Visa type"
+      }
+    },
+    "car":
+    {
+      "lux":
+      {
+        "label": "Choose your lux car"
+      },
+      "tourist":
+      {
+        "label": "Choose your car"
+      },
+      "schema":
+      {
+        "label": "Car rent"
+      }
+    },
+    "submit": "Insert"
+  },
+  
+  "common":
+  {
+    "form_error":
+    {
+      "required": "[label] is required"
+    },
+    "spacefill": "(Select One)"
   }
 }

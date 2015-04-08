@@ -2,5 +2,45 @@
   "body":
   {
     "title": "Eesti keelne naide"
+  },
+  
+  "test_form":
+  {
+    "title": "Taotlus",
+    "visa_type":
+    {
+      "label": "Viisa tüüp",
+      "business": "Äri klass",
+      "tourist": "Turist",
+      "schema":
+      {
+        "label": "Viisa tüüp"
+      }
+    },
+    "car":
+    {
+      "lux":
+      {
+        "label": "Valige oma luksus auto"
+      },
+      "tourist":
+      {
+        "label": "Valige oma auto"
+      },
+      "schema":
+      {
+        "label": "Auto rent"
+      }
+    },
+    "submit": "Kinnitan"
+  },
+  
+  "common":
+  {
+    "form_error":
+    {
+      "required": "[label] on nõutud väli"
+    },
+    "spacefill": "(Vali)"
   }
 }

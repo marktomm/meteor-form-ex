@@ -1,23 +1,56 @@
 <template name="testForm">
   <div class="container">
+    
     {{#autoForm collection="Booking" id="insertBookingForm" type="insert"}}
     <fieldset>
-      <legend>Request Visa</legend>
+      
+      <legend>{{_ "test_form.title"}}</legend>
+      
+      <!-- Visa type -->
       <div class="form-group{{#if afFieldIsInvalid name='visa_type'}} has-error{{/if}}">
-        <label for="visa_type">Visa Type</label>
-        {{> afFieldInput name='visa_type' id='visa_type'}}
-        {{#if afFieldValueIs name='visa_type' value='business'}}
-          <label for='car_option'>Choose your lux car</label>
-          {{> afFieldInput name='car_rent' id='car_option' options=luxCarOptions}}
-        {{else}}
-          {{#if afFieldValueIs name='visa_type' value='tourist'}}
-          <label for='car_option'>Choose your car</label>
-          {{> afFieldInput name='car_rent' id='car_option' options=regularCarOptions}}
-          {{/if}}
+        <label for="visa_type">{{_ "test_form.visa_type.label"}}</label>
+        {{> afFieldInput name='visa_type' id='visa_type' placeholder="schemaLabel"}}
+        
+        <!-- Visa type error message-->
+        {{#if afFieldIsInvalid name='visa_type'}}
+          <span class="help-block">{{afFieldMessage name='visa_type'}}</span>
         {{/if}}
       </div>
+      
+      <!-- Car type -->
+      <div class="form-group{{#if afFieldIsInvalid name='car_rent'}} has-error{{/if}}">
+        {{#if afFieldValueIs name='visa_type' value='business'}}
+            
+          <label for='car_option'>{{_ "test_form.car.lux.label"}}</label>
+          {{> afFieldInput name='car_rent' id='car_option' options=luxCarOptions}}
+        
+          <!-- Car type error message-->
+          {{#if afFieldIsInvalid name='car_rent'}}
+            <span class="help-block">{{afFieldMessage name='car_rent'}}</span>
+          {{/if}}
+        
+        {{else}}
+          
+          {{#if afFieldValueIs name='visa_type' value='tourist'}}
+            <label for='car_option'>{{_ "test_form.car.tourist.label"}}</label>
+            {{> afFieldInput name='car_rent' id='car_option' options=regularCarOptions}}
+            
+            <!-- Car type error message-->
+            {{#if afFieldIsInvalid name='car_rent'}}
+              <span class="help-block">{{afFieldMessage name='car_rent'}}</span>
+            {{/if}}
+          {{/if}}
+        
+        {{/if}}
+      </div>
+    
     </fieldset>
-    <button type="submit" class="btn btn-primary">Insert</button>
+    
+    <button type="submit" class="btn btn-primary">{{_ "test_form.submit"}}</button>
     {{/autoForm}}
+  
   </div>
+</template>
+
+<template name="carType">
 </template>

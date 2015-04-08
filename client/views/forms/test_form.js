@@ -15,30 +15,30 @@ Template.testForm.helpers({
                 { label: "Mazda", value: "mazda" }
               ];
     }
-  });
-  
-  AutoForm.hooks({
-    insertBookingForm: {
-      before: {
-        insert: function(doc, template) {
-          console.log("before");
-          console.log(doc);
-          // send email f.ex.
-          return doc;
+});
+
+AutoForm.hooks({
+  insertBookingForm: {
+    before: {
+      insert: function(doc, template) {
+        console.log("before");
+        console.log(doc);
+        // send email f.ex.
+        return doc;
+      }
+    },
+    after: {
+      insert: function(error, result, template) {
+        console.log("after");
+        if(error){
+          console.log("Insert Error:", error);
         }
-      },
-      after: {
-        insert: function(error, result, template) {
-          console.log("after");
-          if(error){
-            console.log("Insert Error:", error);
-          }
-          else
-          {
-            console.log("Insert Result:", result);
-          }
-          //after db upd
+        else
+        {
+          console.log("Insert Result:", result);
         }
-      },
-    }
-  });
+        //after db upd
+      }
+    },
+  }
+});
