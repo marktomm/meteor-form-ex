@@ -7,6 +7,12 @@
   "test_form":
   {
     "title": "Taotlus",
+    "gender":
+    {
+      "label": "Sugu",
+      "male": "Mees",
+      "female": "Naine"
+    },
     "visa_type":
     {
       "label": "Viisa tüüp",

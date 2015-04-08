@@ -1,6 +1,14 @@
 Booking = new Mongo.Collection("booking");
 
 Booking.attachSchema(new SimpleSchema({
+  gender:{
+    type: String,
+    label: schemaTranslate("test_form.gender.schema.label", "Visa type" ),
+    allowedValues: ["male", "female"],
+    autoform: {
+      firstOption: schemaTranslate("common.spacefill", "-" ),
+    }
+  },
   visa_type: {
     type: String,
     label: schemaTranslate("test_form.visa_type.schema.label", "Visa type" ),

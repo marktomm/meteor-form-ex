@@ -7,6 +7,12 @@
   "test_form":
   {
     "title": "Requested Visa",
+    "gender":
+    {
+      "label": "Sex",
+      "male": "Man",
+      "female": "Woman"
+    },
     "visa_type":
     {
       "label": "Visa Type",

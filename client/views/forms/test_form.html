@@ -5,6 +5,16 @@
     <fieldset>
       
       <legend>{{_ "test_form.title"}}</legend>
+      <!-- Gender -->
+      <div class="form-group{{#if afFieldIsInvalid name='gender'}} has-error{{/if}}">
+        <label for="gender">{{_ "test_form.gender.label"}}</label>
+        {{> afFieldInput name='gender' id='gender' options=genderOptions}}
+        
+        <!-- Gender error message-->
+        {{#if afFieldIsInvalid name='gender'}}
+          <span class="help-block">{{afFieldMessage name='gender'}}</span>
+        {{/if}}
+      </div>
       
       <!-- Visa type -->
       <div class="form-group{{#if afFieldIsInvalid name='visa_type'}} has-error{{/if}}">
