@@ -1,7 +1,7 @@
 Template.testForm.helpers({
     luxCarOptions: function(){
       return  [
-                { label: "Mercedes", value: "merecedes"  },
+                { label: "Mercedes", value: "mercedes"  },
                 { label: "Lexus", value: "lexus" },
                 { label: "Audi", value: "audi" },
                 { label: "Ferrari", value: "ferrari" }
