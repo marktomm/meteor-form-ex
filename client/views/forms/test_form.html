@@ -1,0 +1,23 @@
+<template name="testForm">
+  <div class="container">
+    {{#autoForm collection="Booking" id="insertBookingForm" type="insert"}}
+    <fieldset>
+      <legend>Request Visa</legend>
+      <div class="form-group{{#if afFieldIsInvalid name='visa_type'}} has-error{{/if}}">
+        <label for="visa_type">Visa Type</label>
+        {{> afFieldInput name='visa_type' id='visa_type'}}
+        {{#if afFieldValueIs name='visa_type' value='business'}}
+          <label for='car_option'>Choose your lux car</label>
+          {{> afFieldInput name='car_rent' id='car_option' options=luxCarOptions}}
+        {{else}}
+          {{#if afFieldValueIs name='visa_type' value='tourist'}}
+          <label for='car_option'>Choose your car</label>
+          {{> afFieldInput name='car_rent' id='car_option' options=regularCarOptions}}
+          {{/if}}
+        {{/if}}
+      </div>
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Insert</button>
+    {{/autoForm}}
+  </div>
+</template>
