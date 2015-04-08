@@ -1,0 +1,33 @@
+<template name="testForm">
+  <div class="container">
+    {{#autoForm collection="Booking" id="insertBookingForm" type="insert"}}
+    <fieldset>
+      <legend>{{trans 'form.visa_form_title'}}</legend>
+      <div class="form-group{{#if afFieldIsInvalid name='gender'}} has-error{{/if}}">
+        <label for="gender">{{trans 'form.gender.label'}}</label>
+        {{> afFieldInput name='gender' id='gender' options=genderOptions firstOption="-"}}
+        {{#if afFieldIsInvalid name='gender'}}
+        <span>{{afFieldMessage name='gender'}}</span>
+        {{/if}}
+      </div>
+      <div class="form-group{{#if afFieldIsInvalid name='visa_type'}} has-error{{/if}}">
+        <label for="visa_type">{{trans 'form.visa_type.label'}}</label>
+        {{> afFieldInput name='visa_type' id='visa_type' options=visaTypeOptions firstOption="-"}}
+        {{#if afFieldIsInvalid name='visa_type'}}
+        <span>{{afFieldMessage name='visa_type'}}</span>
+        {{/if}}
+        {{#if afFieldValueIs name='visa_type' value='business'}}
+          <label for='car_option'>{{trans 'form.visa_type.bus_car_opt'}}</label>
+          {{> afFieldInput name='car_rent' id='car_option' options=luxCarOptions firstOption="-"}}
+        {{else}}
+          {{#if afFieldValueIs name='visa_type' value='tourist'}}
+          <label for='car_option'>{{trans 'form.visa_type.tour_car_opt'}}</label>
+          {{> afFieldInput name='car_rent' id='car_option' options=regularCarOptions firstOption="-"}}
+          {{/if}}
+        {{/if}}
+      </div>
+    </fieldset>
+    <button type="submit" class="btn btn-primary">{{trans 'form.signup'}}</button>
+    {{/autoForm}}
+  </div>
+</template>
