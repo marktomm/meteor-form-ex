@@ -11,7 +11,11 @@
     {
       "label": "Sugu",
       "male": "Mees",
-      "female": "Naine"
+      "female": "Naine",
+      "schema":
+      {
+        "label": "Sugu"
+      }
     },
     "visa_type":
     {

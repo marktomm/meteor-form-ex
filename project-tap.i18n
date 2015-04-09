@@ -1,3 +1,4 @@
 {
-    "i18n_files_route": "/translations"
+    "i18n_files_route": "/translations",
+    "supported_languages": ["en", "ee"]
 }

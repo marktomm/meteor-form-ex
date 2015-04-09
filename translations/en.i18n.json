@@ -9,9 +9,13 @@
     "title": "Requested Visa",
     "gender":
     {
-      "label": "Sex",
+      "label": "Gender",
       "male": "Man",
-      "female": "Woman"
+      "female": "Woman",
+      "schema":
+      {
+        "label": "Gender"
+      }
     },
     "visa_type":
     {

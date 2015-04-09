@@ -1,25 +1,11 @@
 Template.testForm.helpers({
-  genderOptions: function(){
-  return [
-          { label: TAPi18n.__('test_form.gender.male'), value: "male" },
-          { label: TAPi18n.__('test_form.gender.female'), value: "female" }
-         ];
-  },
-  luxCarOptions: function(){
-    return  [
-              { label: "Mercedes", value: "mercedes"  },
-              { label: "Lexus", value: "lexus" },
-              { label: "Audi", value: "audi" },
-              { label: "Ferrari", value: "ferrari" }
-            ];
-  },
-  regularCarOptions: function(){
-    return  [
-              { label: "Opel", value: "opel"  },
-              { label: "Ford", value: "ford" },
-              { label: "Kia", value: "kia" },
-              { label: "Mazda", value: "mazda" }
-            ];
+  isVisaTypeInvalid: function() {
+    var visaTypeValue = AutoForm.getFieldValue('visa_type');
+    
+    if(visaTypeValue === undefined) 
+      return true;
+    else
+      return false;
   }
 });
 
