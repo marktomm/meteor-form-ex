@@ -12,16 +12,10 @@
       <!-- Visa type afQuickField example  -->
       {{> afQuickField name='visa_type' id='visa_type'}}
       
-      <!-- Car type more customizable example -->
-      <div class="form-group{{#if afFieldIsInvalid name='car_rent'}} has-error{{/if}} {{#if isVisaTypeInvalid }}hidden{{/if}}">
-        <label for="car_rent">{{_ "test_form.car.schema.label"}}</label>
-        {{> afFieldInput name='car_rent' id='car_rent' placeholder="schemaLabel"}}
-        
-        <!-- Car type error message -->
-        {{#if afFieldIsInvalid name='car_rent'}}
-          <span class="help-block">{{afFieldMessage name='car_rent'}}</span>
-        {{/if}}
-      </div>
+      <!-- Car type example -->
+      {{#if isVisaTypeValid}}
+        {{> afQuickField name='car_rent' id='car_rent'}}
+      {{/if}}
       
     </fieldset>
     

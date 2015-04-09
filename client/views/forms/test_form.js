@@ -1,11 +1,11 @@
 Template.testForm.helpers({
-  isVisaTypeInvalid: function() {
+  isVisaTypeValid: function() {
     var visaTypeValue = AutoForm.getFieldValue('visa_type');
     
     if(visaTypeValue === undefined) 
-      return true;
-    else
       return false;
+
+      return true;
   }
 });
 
