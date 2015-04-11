@@ -1,11 +1,8 @@
-Template.testForm.helpers({
-  isVisaTypeValid: function() {
-    var visaTypeValue = AutoForm.getFieldValue('visa_type');
-    
-    if(visaTypeValue === undefined) 
-      return false;
-
-      return true;
+Template.testForm.events({
+  
+  // Awful hack to get by autoform bug #861
+  "click #car": function() {
+    Session.set('formCarOption', AutoForm.getFieldValue('car', 'insertBookingForm'));
   }
 });
 

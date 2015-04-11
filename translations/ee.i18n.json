@@ -27,7 +27,10 @@
         "label": "Viisa tüüp"
       }
     },
-    "car":
+    "car": {
+      "label": "Kas Te Soovite Rentida Omale Auto"
+    },
+    "car_rent":
     {
       "lux":
       {

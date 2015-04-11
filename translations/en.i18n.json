@@ -27,7 +27,10 @@
         "label": "Visa type"
       }
     },
-    "car":
+    "car": {
+      "label": "Would You Like To Rent a Car"
+    },
+    "car_rent":
     {
       "lux":
       {

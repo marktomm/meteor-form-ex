@@ -6,17 +6,14 @@
       
       <legend>{{_ "test_form.title"}}</legend>
 
-      <!-- Gender afQuickField example -->
       {{> afQuickField name='gender' id='gender'}}
       
-      <!-- Visa type afQuickField example  -->
       {{> afQuickField name='visa_type' id='visa_type'}}
       
-      <!-- Car type example -->
-      {{#if isVisaTypeValid}}
-        {{> afQuickField name='car_rent' id='car_rent'}}
-      {{/if}}
+      {{> afQuickField name='car' id='car'}}
       
+      {{> afQuickField name='car_rent' id='car_rent'}}
+
     </fieldset>
     
     <button type="submit" class="btn btn-primary">{{_ "test_form.submit"}}</button>

@@ -1,6 +1,6 @@
 var genderOptions = [
-          { label: schemaTranslate('test_form.gender.male', 'male'), value: "male" },
-          { label: schemaTranslate('test_form.gender.female', 'female'), value: "female" }
+          { label: SchemaHelpers.schemaTranslate('test_form.gender.male', 'male'), value: "male" },
+          { label: SchemaHelpers.schemaTranslate('test_form.gender.female', 'female'), value: "female" }
          ];
 
 var luxCarOptions = [
@@ -22,40 +22,65 @@ Booking = new Mongo.Collection("booking");
 Booking.attachSchema(new SimpleSchema({
   gender:{
     type: String,
-    label: schemaTranslate("test_form.gender.schema.label", "Visa type" ),
+    label: SchemaHelpers.schemaTranslate("test_form.gender.schema.label", "Visa type" ),
     allowedValues: ["male", "female"],
     autoform: {
-      firstOption: schemaTranslate("common.spacefill", "-" ),
-      options: genderOptions 
+      firstOption: SchemaHelpers.schemaTranslate("common.spacefill", "-" ),
+      options: genderOptions
     }
   },
+  
+  
   visa_type: {
     type: String,
-    label: schemaTranslate("test_form.visa_type.schema.label", "Visa type" ),
+    label: SchemaHelpers.schemaTranslate("test_form.visa_type.schema.label", "Visa type" ),
     allowedValues: [ "business", "tourist" ],
     autoform: {
+      firstOption: SchemaHelpers.schemaTranslate("common.spacefill", "-" ),
       options: [
         { label: "Business", value: "business" },
         { label: "Tourist", value: "tourist" }
       ],
-      firstOption: schemaTranslate("common.spacefill", "-" ),
+    }
+  },
+  
+  
+  car: {
+    type: Boolean,
+    label: SchemaHelpers.schemaTranslate("test_form.car.label"),
+    autoform: {
+      type: function() {
+        if(AutoForm.getFieldValue('visa_type') === undefined)
+          return "hidden";
+        
+        return "";
+      }
     }
   },
   car_rent: {
-    label: schemaTranslate("test_form.car.schema.label", "Car type" ),
+    label: SchemaHelpers.schemaTranslate("test_form.car_rent.schema.label", "Car type" ),
     type: String,
-    allowedValues: [ "mercedes", "lexus", "audi", "ferrari", "opel", "ford", "kia", "mazda" ],
+    allowedValues: [ "mercedes", "lexus", "audi", "ferrari", "opel", "ford", "kia", "mazda"],
+    optional: function() {
+      if(Meteor.isClient) 
+        return !AutoForm.getFieldValue('car');
+      else
+        return true;
+    },
     autoform:{
-      firstOption: schemaTranslate("common.spacefill", "-" ),
+      firstOption: SchemaHelpers.schemaTranslate("common.spacefill", "-" ),
       options: function () {
-        var docId = AutoForm.getFieldValue('visa_type');
-        
-        if(docId == "business")
-          return luxCarOptions;
-        else if(docId == "tourist")
-          return regularCarOptions;
-        else
-          return null;
+        switch(AutoForm.getFieldValue('visa_type')) {
+          case "business": return luxCarOptions;
+          case "tourist": return regularCarOptions;
+          default: return null;
+        }
+      },
+      type: function() {
+        if(!Session.get('formCarOption'))
+          return "hidden";
+          
+        return "";
       }
     }
   },
@@ -64,13 +89,3 @@ Booking.attachSchema(new SimpleSchema({
 Booking.allow({
   insert: function(){return true;}
 });
-
-function schemaTranslate(t_str, e_str)
-{
-  return function() {
-    if(Meteor.isClient)
-      return (TAPi18n.__(t_str));
-    else
-      return e_str;
-  } 
-}

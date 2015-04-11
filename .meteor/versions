@@ -33,6 +33,7 @@ mizzao:bootstrap-3@3.3.1_1
 mobile-status-bar@1.0.3
 momentjs:moment@2.8.4
 mongo@1.1.0
+myformhelpers@0.0.1
 observe-sequence@1.0.6
 ordered-dict@1.0.3
 random@1.0.3
