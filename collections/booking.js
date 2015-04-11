@@ -1,22 +1,3 @@
-var genderOptions = [
-          { label: SchemaHelpers.schemaTranslate('test_form.gender.male', 'male'), value: "male" },
-          { label: SchemaHelpers.schemaTranslate('test_form.gender.female', 'female'), value: "female" }
-         ];
-
-var luxCarOptions = [
-            { label: "Mercedes", value: "mercedes"  },
-            { label: "Lexus", value: "lexus" },
-            { label: "Audi", value: "audi" },
-            { label: "Ferrari", value: "ferrari" }
-          ];
-
-var regularCarOptions = [
-            { label: "Opel", value: "opel"  },
-            { label: "Ford", value: "ford" },
-            { label: "Kia", value: "kia" },
-            { label: "Mazda", value: "mazda" }
-          ];
-
 Booking = new Mongo.Collection("booking");
 
 Booking.attachSchema(new SimpleSchema({
@@ -26,7 +7,7 @@ Booking.attachSchema(new SimpleSchema({
     allowedValues: ["male", "female"],
     autoform: {
       firstOption: SchemaHelpers.schemaTranslate("common.spacefill", "-" ),
-      options: genderOptions
+      options: Fixtures.genderOptions
     }
   },
   
@@ -71,8 +52,8 @@ Booking.attachSchema(new SimpleSchema({
       firstOption: SchemaHelpers.schemaTranslate("common.spacefill", "-" ),
       options: function () {
         switch(AutoForm.getFieldValue('visa_type')) {
-          case "business": return luxCarOptions;
-          case "tourist": return regularCarOptions;
+          case "business": return Fixtures.luxCarOptions;
+          case "tourist": return Fixtures.regularCarOptions;
           default: return null;
         }
       },
